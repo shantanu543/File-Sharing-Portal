@@ -3,8 +3,8 @@
 	if(isset($_SESSION["username"]))
 	{
 		echo "Hi ".$_SESSION["username"];
-		echo "<a href='logout.php'>Log out</a>";
-		echo "<a href='create_zip.php'>Zip</a>";
+		echo "<a href='backend/logout.php'>Log out</a>";
+		echo "<a href='backend/create_zip.php'>Zip</a>";
 	}
 	else
 	{
@@ -37,13 +37,13 @@
 <body>
 <div class="container">	
 
-	<a href="register.php">Sign Up</a>
-	<a href="login.php">Login</a>
+	<a href="backend/register.php">Sign Up</a>
+	<a href="backend/login.php">Login</a>
 	<!-- status message will be appear here -->
 	<div class="status"></div>
 	
 	<!-- multiple file upload form -->
-	<form action="upload.php" method="POST" enctype="multipart/form-data" class="pure-form">
+	<form action="backend/upload.php" method="POST" enctype="multipart/form-data" class="pure-form">
 		<input type="file" name="files[]" multiple="multiple" id="files"><br>
 		Add password for file<input type="password" name="password">*Optional<br>
 		Do you want to compress file?<input type="checkbox" name="check"><br>

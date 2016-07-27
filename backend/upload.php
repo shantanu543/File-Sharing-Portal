@@ -2,13 +2,13 @@
 session_start();
 if(isset($_SESSION["username"]))
 {
-	$dir = '/var/www/html/Test/uploads/'.$_SESSION["username"]."/";
-	$linkname = "http://localhost/Test/uploads/".$_SESSION["username"]."/";
+	$dir = dirname(__FILE__).'/../uploads/'.$_SESSION["username"]."/";
+	$linkname = "http://localhost/File-Sharing-Portal/uploads/".$_SESSION["username"]."/";
 }
 else
 {
-	$dir = '/var/www/html/Test/uploads/';
-	$linkname = "http://localhost/Test/uploads/";
+	$dir = dirname(__FILE__).'/../uploads/';
+	$linkname = "http://localhost/File-Sharing-Portal/uploads/";
 }
 $count = 0;
 
@@ -26,8 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		// now we can move uploaded files
 	    if( move_uploaded_file($_FILES["files"]["tmp_name"][$i], $dir . $name) )
 	    	$count++;
-	    
-	    // echo "yeh le <a href='$linkname$name'>link</a>";
 
 	    $ext = pathinfo($_FILES["files"]["name"][$i], PATHINFO_EXTENSION);
 	   
@@ -55,16 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	   		$zip->addFile($dir.$name,$name);
 
-	   		/*if(isset($_POST["password"]))
-	   		{
-	   			$zip->setPassword("12345");
-	   		}*/
-
 	   		$zip->close();
 	   	}
 	}
 }
 echo json_encode(array('count' => $count));
-header("location:index.php");
+header("location:../index.php");
 
 ?>

@@ -10,6 +10,6 @@
 		<input type="submit" name="submit" value="Login">
 	</form>
 	<a href="register.php">Register</a>
-	<a href="index.php">Home</a>
+	<a href="../index.php">Home</a>
 </body>
 </html>
